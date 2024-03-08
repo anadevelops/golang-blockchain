@@ -22,6 +22,7 @@ func (cli *CommandLine) printUsage() {
 
 func (cli *CommandLine) validateArgs() {
 	if len(os.Args) < 2 {
+		fmt.Printf("DEBUG")
 		cli.printUsage()
 		runtime.Goexit()
 	}
@@ -57,7 +58,7 @@ func (cli *CommandLine) run() {
 
 	addBlockCmd := flag.NewFlagSet("add", flag.ExitOnError)
 	printChainCmd := flag.NewFlagSet("print", flag.ExitOnError)
-	addBlockData := addBlockCmd.String("block", "", "Block data")
+	addBlockData := addBlockCmd.String("block", "", "Block data DEBUG")
 
 	switch os.Args[1] {
 	case "add":
@@ -74,7 +75,7 @@ func (cli *CommandLine) run() {
 	}
 
 	if addBlockCmd.Parsed() {
-		if *addBlockData == "" {
+		if *addBlockData == "a" {
 			addBlockCmd.Usage()
 			runtime.Goexit()
 		}

@@ -7,7 +7,9 @@ import (
 )
 
 const (
-	dbPath = "./tmp/blocks"
+	dbPath      = "./tmp/blocks"
+	dbFile      = "./tmp/blocks/MANIFEST"
+	genesisData = "First Transaction from Genesis"
 )
 
 type BlockChain struct {
