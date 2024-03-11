@@ -1,6 +1,6 @@
 module github.com/anadevelops/golang-blockchain
 
-go 1.22.0
+go 1.18.0
 
 require (
 	github.com/dgraph-io/badger v1.6.2

@@ -3,6 +3,7 @@ package cli
 import (
 	"flag"
 	"fmt"
+	"log"
 	"os"
 	"runtime"
 	"strconv"
@@ -126,7 +127,9 @@ func (cli *CommandLine) Run() {
 
 	case "createwallet":
 		err := createWalletCmd.Parse(os.Args[2:])
-		blockchain.Handle(err)
+		if err != nil {
+			log.Panic(err)
+		}
 
 	case "printchain":
 		err := printChainCmd.Parse(os.Args[2:])
@@ -142,7 +145,7 @@ func (cli *CommandLine) Run() {
 	}
 
 	if getBalanceCmd.Parsed() {
-		if *getBalanceAddress == " " {
+		if *getBalanceAddress == "" {
 			getBalanceCmd.Usage()
 			runtime.Goexit()
 		}
@@ -150,7 +153,7 @@ func (cli *CommandLine) Run() {
 	}
 
 	if createBlockchainCmd.Parsed() {
-		if *createBlockchainAddress == " " {
+		if *createBlockchainAddress == "" {
 			createBlockchainCmd.Usage()
 			runtime.Goexit()
 		}

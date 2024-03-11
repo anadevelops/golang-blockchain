@@ -56,7 +56,7 @@ func (ws *Wallets) loadFile() error {
 
 	var wallets Wallets
 
-	fileContent, err := ioutil.ReadFile(walletFile)
+	fileContent, err := os.ReadFile(walletFile)
 	blockchain.Handle(err)
 
 	gob.Register(elliptic.P256())
